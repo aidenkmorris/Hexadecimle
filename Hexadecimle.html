@@ -1,0 +1,209 @@
+<!doctype HTML>
+<html>
+	<head>
+		<style>
+			body
+			{
+				font-family: monospace;
+				color: #ffffff;
+				overflow: hidden;
+			}
+			
+			input[type = "text"], textarea
+			{
+				
+				font-size: 30px;
+				color: #000000;
+				text-align: center;
+				width: 3vw;
+				height: 3vw;
+				border: 3px solid #000000;
+				border-radius: 10px;
+				padding: 25px 25px;
+				font-weight: bold;
+			}
+			
+			h1
+			{
+				
+				font-size: 5vw;
+				text-align: center;
+				text-shadow: 0px 0px 7px #000000;
+				letter-spacing: 7px;
+				margin-top: 5vh;
+				margin-bottom: 5vh;
+				margin-left: 25vw;
+				width: 50vw;
+			}
+			
+			p
+			{
+				text-align: center;
+				text-shadow: 0px 0px 7px #000000;
+			}
+			
+			#name
+			{
+				font-size: 16px;
+				text-shadow: 0px 0px 7px #000000;
+				position: absolute;
+				bottom: 0px;
+			}
+			
+			button
+			{
+				background-color: #ffffff;
+				color: #000000;
+				padding: 10px;
+				border-radius: 4px;
+				font-family: monospace;
+				font-weight: bold;
+				font-size: 20px;
+			}
+			
+			#submitbutton
+			{
+				display: flex;
+				justify-content: center;
+				margin-top: 20px;
+				margin-left: 30vw;
+				width: 40vw;
+				height: 8vh;
+			}
+			
+			button:hover
+			{
+				background-color: #000000;
+				color: #ffffff;
+			}
+			
+			#box
+			{
+				padding-top: 10px;
+				padding-bottom: 10px;
+				margin-left: 30vw;
+				width: 40vw;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				text-align: center;
+				border: 4px solid #000000;
+				border-radius: 12px;
+				line-height: 10px;
+				font-size: 3vw;
+			}
+			
+			#history
+			{
+				font-size: 1vw;
+				text-shadow: 0px 0px 7px #000000;
+				text-align: center;
+				margin-left: 30vw;
+				width: 40vw;
+			}
+			
+			#history p:hover
+			{
+				text-shadow: 0px 0px 7px #ffffff;
+				color: #000000;
+			}
+			
+			#buttons
+			{
+				margin-top: 20px;
+				margin-left: 30vw;
+				width: 40vw;
+				text-align: center;
+			}
+			
+			#R
+			{
+				background-color : #ff0000;
+			}
+			#G
+			{
+				background-color : #00ff00;
+			}
+			#B
+			{
+				background-color : #0000ff;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>HEXADECIMLE</h1>
+		<div id = "box"><p><span id = "infoGuess">Your Guess: #------</span></p>
+		<p><span id = "infoDistance">Distance: ---.---</span></p></div>
+		<div id = "buttons"><input type = "text" maxlength = "2" id = "R" value = ""></input>
+		<input type = "text" maxlength = "2" id = "G" value = ""></input> 
+		<input type = "text" maxlength = "2" id = "B" value = ""></input></div>
+		<span id = "submitbutton"><button onclick = "makeGuess()"><span id = "infoNumber">Submit Guess #1</span></button></span>
+		<div id = "history">
+			<p><span id = "infoPGuess">Previous Guess: #------</span></p>
+			<p><span id = "infoPDistance">Previous Distance: ---.---</span></p>
+			<p><span id = "infoBGuess">Best Guess: #------</span></p>
+			<p><span id = "infoBDistance">Best Distance: ---.---</span></p>
+		</div>
+		<span id = "name"><p>A Game by Aiden Morris</p></span>
+		<script>
+			const color = Math.floor(Math.random()*16777215).toString(16);
+			console.log(color);
+			document.body.style.backgroundColor = "#" + color;
+			const hexToDecimal = hex => parseInt(hex, 16);
+			var numberOfGuesses = 1;
+			var BDistance = "500.000";
+			var PGuess = "------";
+			var PDistance = "---.---";
+			
+			function makeGuess()
+			{	
+				var r = document.getElementById("R").value;
+				var g = document.getElementById("G").value;
+				var b = document.getElementById("B").value;
+				var guess = r + g + b;
+				
+				if(guess == color)
+				{
+					alert("You got the Hexadecimle (#" + color + ") in " + numberOfGuesses + " guesses!");
+				}
+				
+				document.getElementById("box").style.backgroundColor = "#" + guess;
+				
+				var Rg = hexToDecimal(r);
+				var Gg = hexToDecimal(g);
+				var Bg = hexToDecimal(b);
+
+				
+				var Rv = hexToDecimal(color.charAt(0) + color.charAt(1));
+				var Gv = hexToDecimal(color.charAt(2) + color.charAt(3));
+				var Bv = hexToDecimal(color.charAt(4) + color.charAt(5));
+				
+				var distance = "" + Math.sqrt((parseInt(Rv) - parseInt(Rg)) * (parseInt(Rv) - parseInt(Rg)) + (parseInt(Gv) - parseInt(Gg)) * (parseInt(Gv) - parseInt(Gg)) + (parseInt(Bv) - parseInt(Bg)) * (parseInt(Bv) - parseInt(Bg)));
+			
+				var x = document.getElementById("infoGuess");
+				x.innerHTML = "Your Guess: #" + guess;
+				var y = document.getElementById("infoDistance");
+				y.innerHTML = "Distance: " + Math.round(distance * 1000) / 1000;
+				
+				if(parseInt(distance) < parseFloat(BDistance))
+				{
+					document.getElementById("infoBGuess").innerHTML = "Best Guess: #" + guess;
+					document.getElementById("infoBDistance").innerHTML = "Best Distance: " + Math.round(distance * 1000) / 1000;
+					BDistance = distance;
+				}
+				
+				document.getElementById("infoPGuess").innerHTML = "Previous Guess: #" + PGuess;
+				document.getElementById("infoPDistance").innerHTML = "Previous Distance: " + PDistance;
+				
+				
+				PGuess = guess;
+				PDistance = Math.round(distance * 1000) / 1000;
+				console.log(PGuess + " - " + PDistance);
+				
+				numberOfGuesses += 1;
+				var z = document.getElementById("infoNumber");
+				z.innerHTML = "Submit Guess #" + numberOfGuesses;
+			}
+		</script>
+	</body>
+</html>

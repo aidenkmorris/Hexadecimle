@@ -147,20 +147,19 @@
 		<span id = "name"><p>A Game by Aiden Morris</p></span>
 		<script>
 			const color = Math.floor(Math.random()*16777215).toString(16);
-			console.log(color);
 			document.body.style.backgroundColor = "#" + color;
 			const hexToDecimal = hex => parseInt(hex, 16);
-			var numberOfGuesses = 1;
-			var BDistance = "500.000";
-			var PGuess = "------";
-			var PDistance = "---.---";
+			let numberOfGuesses = 1;
+			let BDistance = "500.000";
+			let PGuess = "------";
+			let PDistance = "---.---";
 			
 			function makeGuess()
 			{	
-				var r = document.getElementById("R").value;
-				var g = document.getElementById("G").value;
-				var b = document.getElementById("B").value;
-				var guess = r + g + b;
+				let r = document.getElementById("R").value;
+				let g = document.getElementById("G").value;
+				let b = document.getElementById("B").value;
+				let guess = r + g + b;
 				
 				if(guess == color)
 				{
@@ -169,21 +168,19 @@
 				
 				document.getElementById("box").style.backgroundColor = "#" + guess;
 				
-				var Rg = hexToDecimal(r);
-				var Gg = hexToDecimal(g);
-				var Bg = hexToDecimal(b);
+				let Rg = hexToDecimal(r);
+				let Gg = hexToDecimal(g);
+				let Bg = hexToDecimal(b);
 
 				
-				var Rv = hexToDecimal(color.charAt(0) + color.charAt(1));
-				var Gv = hexToDecimal(color.charAt(2) + color.charAt(3));
-				var Bv = hexToDecimal(color.charAt(4) + color.charAt(5));
+				let Rv = hexToDecimal(color.charAt(0) + color.charAt(1));
+				let Gv = hexToDecimal(color.charAt(2) + color.charAt(3));
+				let Bv = hexToDecimal(color.charAt(4) + color.charAt(5));
 				
-				var distance = "" + Math.sqrt((parseInt(Rv) - parseInt(Rg)) * (parseInt(Rv) - parseInt(Rg)) + (parseInt(Gv) - parseInt(Gg)) * (parseInt(Gv) - parseInt(Gg)) + (parseInt(Bv) - parseInt(Bg)) * (parseInt(Bv) - parseInt(Bg)));
+				let distance = "" + Math.sqrt((parseInt(Rv) - parseInt(Rg)) * (parseInt(Rv) - parseInt(Rg)) + (parseInt(Gv) - parseInt(Gg)) * (parseInt(Gv) - parseInt(Gg)) + (parseInt(Bv) - parseInt(Bg)) * (parseInt(Bv) - parseInt(Bg)));
 			
-				var x = document.getElementById("infoGuess");
-				x.innerHTML = "Your Guess: #" + guess;
-				var y = document.getElementById("infoDistance");
-				y.innerHTML = "Distance: " + Math.round(distance * 1000) / 1000;
+				document.getElementById("infoGuess").innerHTML = "Your Guess: #" + guess;
+				document.getElementById("infoDistance").innerHTML = "Distance: " + Math.round(distance * 1000) / 1000;
 				
 				if(parseInt(distance) < parseFloat(BDistance))
 				{
@@ -201,8 +198,7 @@
 				console.log(PGuess + " - " + PDistance);
 				
 				numberOfGuesses += 1;
-				var z = document.getElementById("infoNumber");
-				z.innerHTML = "Submit Guess #" + numberOfGuesses;
+				document.getElementById("infoNumber").innerHTML = "Submit Guess #" + numberOfGuesses;
 			}
 		</script>
 	</body>

@@ -1,32 +1,25 @@
 body {
     font-family: monospace;
     color: #ffffff;
-    overflow: hidden;
 }
 
 input[type = "text"], textarea {
-    
-    font-size: 30px;
+    font-size: clamp(1.25rem, 3vw, 2.25rem);
     color: #000000;
     text-align: center;
-    width: 3vw;
-    height: 3vw;
+    width: 2.5em;
+    height: 2.5em;
     border: 3px solid #000000;
     border-radius: 10px;
-    padding: 25px 25px;
+    padding: 0.25em;
     font-weight: bold;
 }
 
 h1 {
-    
-    font-size: 5vw;
+    font-size: clamp(2.5rem, 5vw, 7.5rem);
     text-align: center;
     text-shadow: 0px 0px 7px #000000;
-    letter-spacing: 7px;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
-    margin-left: 25vw;
-    width: 50vw;
+    letter-spacing: 2vw;
 }
 
 p {
@@ -35,10 +28,13 @@ p {
 }
 
 #name {
-    font-size: 2vw;
+    font-size: clamp(0.75rem, 2vw, 1.25rem);
     text-shadow: 0px 0px 7px #000000;
     position: absolute;
     bottom: 0px;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 button {
@@ -48,16 +44,13 @@ button {
     border-radius: 4px;
     font-family: monospace;
     font-weight: bold;
-    font-size: 20px;
+    font-size: clamp(1.25rem, 5vw, 2rem);
 }
 
 #submitbutton {
     display: flex;
     justify-content: center;
     margin-top: 20px;
-    margin-left: 30vw;
-    width: 40vw;
-    height: 8vh;
 }
 
 button:hover {
@@ -68,8 +61,9 @@ button:hover {
 #box {
     padding-top: 10px;
     padding-bottom: 10px;
-    margin-left: 30vw;
-    width: 40vw;
+    width: clamp(15rem, 45vw, 40rem);
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -77,15 +71,13 @@ button:hover {
     border: 4px solid #000000;
     border-radius: 12px;
     line-height: 10px;
-    font-size: 3vw;
+    font-size: clamp(1rem, 3.5vw, 4rem);
 }
 
 #history {
-    font-size: 2vw;
+    font-size: clamp(0.75rem, 2vw, 2rem);
     text-shadow: 0px 0px 7px #000000;
     text-align: center;
-    margin-left: 30vw;
-    width: 40vw;
 }
 
 #history p:hover {
@@ -95,9 +87,16 @@ button:hover {
 
 #buttons {
     margin-top: 20px;
-    margin-left: 30vw;
-    width: 40vw;
     text-align: center;
+}
+
+/* Desktop / Wider Displays */
+@media (min-width: 850px) {
+    #name {
+        left: unset;
+        transform: unset;
+        position: fixed;
+    }
 }
 
 #R {

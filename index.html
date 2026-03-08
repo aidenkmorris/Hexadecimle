@@ -8,20 +8,22 @@
 <body>
   <h1>HEXADECIMLE</h1>
 		
-  <div id = "box"><p><span id = "infoGuess">Your Guess: #------</span></p>
+  <div id = "box">
+    <p><span id = "infoGuess">Your Guess: #------</span></p>
     <p><span id = "infoDistance">Distance: ---.---</span></p>
   </div>
   
-  <div id = "buttons"><input type = "text" maxlength = "2" id = "R" value = ""></input>
+  <div id = "buttons">
+    <input type = "text" maxlength = "2" id = "R" value = ""></input>
     <input type = "text" maxlength = "2" id = "G" value = ""></input> 
     <input type = "text" maxlength = "2" id = "B" value = ""></input>
   </div>
 
-  <span id = "submitbutton">
+  <div id = "submitbutton">
     <button onclick = "makeGuess()">
       <span id = "infoNumber">Submit Guess #1</span>
     </button>
-  </span>
+  </div>
 
   <div id = "history">
     <p><span id = "infoPreviousGuess">Previous Guess: #------</span></p>
@@ -30,6 +32,8 @@
     <p><span id = "infoBestDistance">Best Distance: ---.---</span></p>
   </div>
   
-  <span id = "name"><p>A Game by Aiden Morris</p></span>
+  <div id = "name">
+    <p>A Game by Aiden K Morris</p>
+  </div>
 </body>
 </html>

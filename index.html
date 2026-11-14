@@ -2,8 +2,7 @@
 <html>
 <head>
   <title>HEXADECIMLE</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
+  <script type="module" src="/src/main.ts"></script>
 </head>
 <body>
   <h1>HEXADECIMLE</h1>
@@ -13,17 +12,19 @@
     <p><span id = "infoDistance">Distance: ---.---</span></p>
   </div>
   
-  <div id = "buttons">
-    <input type = "text" maxlength = "2" id = "R" value = ""></input>
-    <input type = "text" maxlength = "2" id = "G" value = ""></input> 
-    <input type = "text" maxlength = "2" id = "B" value = ""></input>
-  </div>
+  <form id="formMakeGuess">
+    <div id = "buttons">
+      <input type = "text" maxlength = "2" id = "R" value = ""></input>
+      <input type = "text" maxlength = "2" id = "G" value = ""></input> 
+      <input type = "text" maxlength = "2" id = "B" value = ""></input>
+    </div>
 
-  <div id = "submitbutton">
-    <button onclick = "makeGuess()">
-      <span id = "infoNumber">Submit Guess #1</span>
-    </button>
-  </div>
+    <div id = "submitbutton">
+      <button id="submitGuess">
+        <span id = "infoNumber">Submit Guess #1</span>
+      </button>
+    </div>
+  </form>
 
   <div id = "history">
     <p><span id = "infoPreviousGuess">Previous Guess: #------</span></p>

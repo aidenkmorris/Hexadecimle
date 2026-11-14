@@ -12,7 +12,7 @@ function makeGuess() {
   let r = document.getElementById("R").value;
   let g = document.getElementById("G").value;
   let b = document.getElementById("B").value;
-  let guess = r + g + b;
+  let guess = (r + g + b);
   
   if(guess == color) {
     alert("You got the Hexadecimle (#" + color + ") in " + numberOfGuesses + " guesses!");

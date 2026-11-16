@@ -1,5 +1,15 @@
 // Aiden K Morris
-const color = Math.floor(Math.random() * 16777215)
+import { SeededRandom } from "./tool";
+
+const date = new Date().toLocaleDateString("en-US", {
+  timeZone: "America/New_York",
+}).replaceAll('/', '');
+
+const dateSeed = parseInt(date, 10);
+export let srand = new SeededRandom(dateSeed);
+
+// Generate color
+const color = Math.floor(srand.random() * 16777215)
   .toString(16).padStart(6, '0');
 
 const hexToDecimal = (hex: string) => parseInt(hex, 16);
